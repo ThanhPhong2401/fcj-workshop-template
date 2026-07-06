@@ -1,23 +1,32 @@
 name: GitHub Pages
+
 on:
   push:
     branches:
-      - main
+      - main  # Thay đổi này sẽ kích hoạt quá trình build
+
 jobs:
-  build:
+  build-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
-          submodules: false # Dòng này cực kỳ quan trọng
+          submodules: false
+          persist-credentials: false
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: 'latest'
+          extended: true
+
       - name: Build
         run: hugo --minify
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
+          publish_branch: gh-pages # Đây là nhánh sẽ chứa code web
