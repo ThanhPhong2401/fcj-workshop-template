@@ -31,8 +31,7 @@ chapter: false
 
 &emsp; **Internship Duration:** From 17/04/2026 to 17/07/2026
 
-![Your profile picture](/images/anhAvartar.jpg)
-
+![](/images/anhAvartar.jpg)
 ### Report Content
 
 1.  [Worklog](1-Worklog/)
